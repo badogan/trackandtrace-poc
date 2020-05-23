@@ -1,5 +1,5 @@
-# Track and Trace PoC
-Track and Trace PoC provides list of uniqueIds who came close to another uniqueId after a certain date/time. It is an effort to answer the track-and-trace question posed by many organizations. It is a PoC (proof-of-concept) hence the technical implementation does not intend to and cannot provide any individually identifiable data.
+# Track and Trace PoC - Backend
+Track and Trace PoC provides list of uniqueIds who came close to another uniqueId after a certain date/time. It is an effort to answer the track-and-trace question posed by many organizations. It is a PoC (proof-of-concept) hence the technical implementation does not intend to and cannot provide any individually identifiable data. This repo is for backend only.
 
 ## FAQ
 Q: How does the code "identify" the uniqueIds who came close to a given uniqueId after a certain date/time?
@@ -47,3 +47,6 @@ TODO: Performance, PoC, Experimentation needed in all stages
 ## Organizational Aspects
 TODO: Effort, dev and experimentation cannot be done in isolation from the current infra and team. Must be an extension
 TODO: Cost, onprem, cloud, admin, signup/login, balance among use of current and redesign/develop and learnings will need to be ongoing
+
+## Author
+Basri Dogan

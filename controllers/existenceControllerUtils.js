@@ -84,31 +84,17 @@ exports.createExistence = () =>
   });
 
 exports.bringJobQueueResults = () =>
-  catchAsync(async (req, res, next) => {
-    const doc = await JobQueue.findById(req.body.jobQueueId);
-    if (doc && !doc.completedAt) {
+  catchAsync(
+    async (req, res, next) => {
+      const doc = await JobQueue.findById(req.body.jobQueueId);
+
       res.status(201).json({
         status: 'success',
-        data: { message: 'Reference JobQueue still in progress' }
-      });
-    } else {
-      const iterateThis = doc.searchResult;
-      let involvedListArray = [];
-      while (iterateThis.length > 0) {
-        const targetItem = iterateThis.pop();
-        console.log('targetItem:', targetItem);
-        const result = await getEMAC(targetItem);
-        involvedListArray.push(result);
-      }
-      const uniqueList = [...new Set(involvedListArray)];
-      res.status(201).json({
-        status: 'success',
-        data: { count: uniqueList.length, uniqueList }
+        data: doc
       });
     }
-  });
 
-async function getEMAC(oneItem) {
-  const result = await Existence.findById(oneItem);
-  return result.eMAC;
-}
+// async function getEMAC(oneItem) {
+//   const result = await Existence.findById(oneItem);
+//   return result.eMAC;
+// }

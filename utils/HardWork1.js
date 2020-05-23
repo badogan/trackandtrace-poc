@@ -7,6 +7,7 @@ const Queue = require('bull');
 const receiveQueue = new Queue('HardWork1');
 const { MongoClient, ObjectID } = require('mongodb');
 const JobQueue = require('../models/jobQueueModel');
+const sendQueue = new Queue('HardWork2');
 
 process.on('uncaughtException', err => {
   console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
@@ -44,6 +45,7 @@ receiveQueue.process(async (job, done) => {
       refId: job.data.refId,
       searchResult
     });
+    sendQueue.add({ refId: job.data.refId });
     console.log('Completed. JobQueue _id: ', job.data.refId);
   } catch (err) {
     console.log(err);
