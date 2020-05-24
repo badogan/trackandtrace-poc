@@ -2,9 +2,11 @@
 /* eslint-disable no-use-before-define */
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-dotenv.config({ path: '../config.env' });
-const moment = require('moment');
 const Queue = require('bull');
+const moment = require('moment');
+
+dotenv.config({ path: '../config.env' });
+
 const receiveQueue = new Queue('HardWork2');
 const { MongoClient, ObjectID } = require('mongodb');
 const JobQueue = require('../models/jobQueueModel');

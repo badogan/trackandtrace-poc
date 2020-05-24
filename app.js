@@ -48,12 +48,12 @@ app.use(express.json({ limit: '10kb' }));
 
 // Prevent parameter pollution
 // app.use(
-  //   hpp({
+//   hpp({
 //     whitelist: [
-  //       'duration',
-  //       'ratingsQuantity',
-  //       'ratingsAverage',
-  //       'maxGroupSize',
+//       'duration',
+//       'ratingsQuantity',
+//       'ratingsAverage',
+//       'maxGroupSize',
 //       'difficulty',
 //       'price'
 //     ]

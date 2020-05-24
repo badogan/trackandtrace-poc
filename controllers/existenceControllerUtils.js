@@ -92,7 +92,7 @@ exports.bringJobQueueResults = () =>
         status: 'success',
         data: doc
       });
-    }
+    })
 
 // async function getEMAC(oneItem) {
 //   const result = await Existence.findById(oneItem);
