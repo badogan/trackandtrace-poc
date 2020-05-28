@@ -40,7 +40,7 @@ receiveQueue.process(async (job, done) => {
 
   try {
     await client.connect();
-    // console.log('HARD woRK 2 -STEP2', doc);
+
     const iterateThis = doc.searchResult;
     const involvedListArray = [];
     while (iterateThis.length > 0) {
