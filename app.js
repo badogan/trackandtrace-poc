@@ -103,7 +103,6 @@ app.options('*', cors());
 app.use('/api/v1/getipdetails', getIPDetailsRouter);
 app.use('/api/v1/existence', existenceRouter);
 app.use('/api/v1/users', userRouter);
-// app.use('/api/v1/books', bookRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

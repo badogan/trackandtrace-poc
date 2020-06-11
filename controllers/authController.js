@@ -31,7 +31,9 @@ const createSendToken = (user, statusCode, res) => {
     status: 'success',
     token,
     data: {
-      user
+      _id: user._id,
+      email: user.email,
+      name: user.name
     }
   });
 };
@@ -41,8 +43,8 @@ exports.signup = catchAsync(async (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
-    passwordConfirm: req.body.passwordConfirm,
-    role: req.body.role
+    passwordConfirm: req.body.passwordConfirm
+    // role: req.body.role || 'user' //TODO: Remove this if not necessary!
   });
 
   // console.log('HERE:    ', newUser);
