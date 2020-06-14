@@ -51,6 +51,10 @@ exports.signup = catchAsync(async (req, res, next) => {
   createSendToken(newUser, 201, res);
 });
 
+exports.loginGoogle = catchAsync(async (req, res, next) => {
+  console.log('Google Login route reached');
+});
+
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 

@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
+router.get('/loginGoogle', authController.loginGoogle);
 
 router
   .route('/:userId/q1results/')
