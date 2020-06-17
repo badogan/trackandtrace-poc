@@ -1,28 +1,27 @@
 const express = require('express');
-const expressip = require('express-ip');
 const cors = require('cors');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
-// const helmet = require('helmet');
+const helmet = require('helmet');
 // const mongoSanitize = require('express-mongo-sanitize');
 // const xss = require('xss-clean');
 // const hpp = require('hpp');
 const compression = require('compression');
-
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
+const passportSetup = require('./config/passport-setup');
+const passport = require('passport');
 
 const userRouter = require('./routes/userRoutes');
-// const getIPDetailsRouter = require('./routes/getIPDetailsRoutes');
 // const existenceRouter = require('./routes/existenceRoutes');
 
 const app = express();
 
-app.use(expressip().getIpInfoMiddleware);
+app.use(passport.initialize());
 
 // 1) GLOBAL MIDDLEWARES
 // Set security HTTP headers
-// app.use(helmet());
+app.use(helmet());
 
 // Development logging
 if (process.env.NODE_ENV === 'development') {
@@ -100,7 +99,7 @@ const corsOptions = {
 app.use(cors());
 // app.use(cors(corsOptions));
 app.options('*', cors());
-// app.use('/api/v1/getipdetails', getIPDetailsRouter);
+
 // app.use('/api/v1/existence', existenceRouter);
 app.use('/api/v1/users', userRouter);
 
@@ -109,7 +108,5 @@ app.all('*', (req, res, next) => {
 });
 
 app.use(globalErrorHandler);
-// redisTaskQueueProcessor
 
 module.exports = app;
-//NOT YET - Deployed Heroku

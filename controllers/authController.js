@@ -26,13 +26,13 @@ const createSendToken = (user, statusCode, res) => {
 
   // Remove password from output
   user.password = undefined;
-
+  console.log('inside createSendToken - about to construct the response');
   res.status(statusCode).json({
     status: 'success',
     token,
     data: {
       _id: user._id,
-      email: user.email,
+      // email: user.email,
       name: user.name
     }
   });
@@ -51,10 +51,27 @@ exports.signup = catchAsync(async (req, res, next) => {
   createSendToken(newUser, 201, res);
 });
 
-exports.loginGoogle = catchAsync(async (req, res, next) => {
-  console.log('Google Login route reached');
-});
+//=======================
 
+exports.createSendTokenLoginGoogleInternal = (user) => {
+  const token = signToken(user._id);
+  // const cookieOptions = {
+  //   expires: new Date(
+  //     Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+  //   ),
+  //   httpOnly: true
+  // };
+  // if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+
+  // res.cookie('jwt', token, cookieOptions);
+
+  // Remove password from output
+  // user.password = undefined;
+  return {
+    token
+  };
+};
+//=====================
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
