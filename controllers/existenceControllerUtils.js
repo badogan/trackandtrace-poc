@@ -84,15 +84,14 @@ exports.createExistence = () =>
   });
 
 exports.bringJobQueueResults = () =>
-  catchAsync(
-    async (req, res, next) => {
-      const doc = await JobQueue.findById(req.body.jobQueueId);
+  catchAsync(async (req, res, next) => {
+    const doc = await JobQueue.findById(req.body.jobQueueId);
 
-      res.status(201).json({
-        status: 'success',
-        data: doc
-      });
-    })
+    res.status(201).json({
+      status: 'success',
+      data: doc
+    });
+  });
 
 // async function getEMAC(oneItem) {
 //   const result = await Existence.findById(oneItem);

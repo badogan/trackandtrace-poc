@@ -1,12 +1,14 @@
 /* eslint-disable arrow-parens */
 /* eslint-disable no-use-before-define */
 const dotenv = require('dotenv');
+
 dotenv.config({ path: '../config.env' });
 const moment = require('moment');
 const Queue = require('bull');
+
 const receiveQueue = new Queue('HardWork1');
 const { MongoClient, ObjectID } = require('mongodb');
-const JobQueue = require('../models/jobQueueModel');
+// const JobQueue = require('../models/jobQueueModel');
 const sendQueue = new Queue('HardWork2');
 
 process.on('uncaughtException', err => {
@@ -36,10 +38,10 @@ receiveQueue.process(async (job, done) => {
         );
       })
     );
-    // console.log('ALL THE RESULT:', resultsAll);
+
     const searchResult = [...new Set(resultsAll.flat())];
     //ListInvolvedParties
-    //
+
     await updateJobQueue({
       client,
       refId: job.data.refId,
@@ -94,9 +96,7 @@ const formAggregationObject = (obj, client) => {
           coordinates: [longitude, latitude]
         },
         distanceField: 'dist.calculated',
-        // maxDistance: 40,
         maxDistance: obj.maxDistance,
-        // spherical: true,
         key: 'location'
       }
     },

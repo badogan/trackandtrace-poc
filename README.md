@@ -33,7 +33,7 @@ Description. Uses MongoDB aggregation thru NodeJS controller code and MongoDB no
 @return {number}    count           count of uniqueIds
 
 TODO: DONE Accept maxDistance as a query parameter
-TODO: (Dev) Prepare a basic entry form and put FE infra in place (React, Redux, ReactRouter, Page + Component structure with initial API wiring)
+TODO: DONE (Dev) Prepare a basic entry form and put FE infra in place (React, Redux, ReactRouter, Page + Component structure with initial API wiring)
 TODO: (Think) Move to TS on backend code? Write tests and deploy as well? 
 
 ## Brainstorming - Potential Next Tasks

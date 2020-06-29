@@ -32,7 +32,6 @@ async function dataLoad(processThis) {
       return doc;
     });
   await delayedPromise;
-  // await delay(100);
   return result;
 }
 
@@ -56,7 +55,7 @@ const s = fs
           location: currentObj.location
         };
         console.log('currentObj.eMAC: ', currentObj.eMAC);
-        dataLoad(processThisObj).then(() => s.resume());
+        dataLoad(processThisObj).then(() => s.resume()); //resume the readstream
       })
       .on('error', err => {
         console.log('Error while reading file.', err);

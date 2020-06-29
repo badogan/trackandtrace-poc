@@ -1,5 +1,5 @@
-const Existence = require('../models/existenceModel');
-const factory = require('./handlerFactory');
+// const Existence = require('../models/existenceModel');
+// const factory = require('./handlerFactory');
 const existenceControllerUtils = require('./existenceControllerUtils');
 
 exports.createExistence = existenceControllerUtils.createExistence();

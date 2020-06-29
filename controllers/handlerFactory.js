@@ -2,7 +2,6 @@ const APIFeatures = require('../utils/apiFeatures');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const User = require('../models/userModel.js');
-const Appointment = require('../models/appointmentModel.js');
 
 exports.deleteOne = Model =>
   catchAsync(async (req, res, next) => {
@@ -52,7 +51,7 @@ exports.updateOne = Model =>
     );
 
     if (!doc) {
-      return next(new AppError('No doc found with that IDppppp', 404));
+      return next(new AppError('No doc found with that ID', 404));
     }
 
     // console.log('doc IS: ', doc)
