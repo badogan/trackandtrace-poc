@@ -53,7 +53,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 
 //=======================
 
-exports.createSendTokenLoginGoogleInternal = (user) => {
+exports.createSendTokenLoginGoogleInternal = user => {
   const token = signToken(user._id);
   // const cookieOptions = {
   //   expires: new Date(
@@ -89,6 +89,17 @@ exports.login = catchAsync(async (req, res, next) => {
   //  console.log("Somebody has just LOGGED IN!")
   // 3) If everything ok, send token to client
   createSendToken(user, 200, res);
+});
+
+exports.isEmailAvailable = catchAsync(async (req, res, next) => {
+  const { email } = req.body;
+  //check if the user exists
+  //return true or false accordingly
+  const emailAvailable = (await User.findOne({ email })) ? false : true;
+  res.status(200).json({
+    status: 'success',
+    data: { emailAvailable }
+  });
 });
 
 exports.protect = catchAsync(async (req, res, next) => {

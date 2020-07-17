@@ -7,6 +7,7 @@ const existenceController = require('../controllers/existenceController');
 const router = express.Router();
 dotenv.config({ path: './config.env' });
 
+router.post('/isemailavailable',authController.isEmailAvailable)
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
 router.get(
