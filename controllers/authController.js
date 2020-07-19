@@ -96,6 +96,7 @@ exports.isEmailAvailable = catchAsync(async (req, res, next) => {
   //check if the user exists
   //return true or false accordingly
   const emailAvailable = (await User.findOne({ email })) ? false : true;
+  console.log('emailAvailable:', emailAvailable);
   res.status(200).json({
     status: 'success',
     data: { emailAvailable }
